@@ -2,6 +2,7 @@ import streamlit as st
 import yfinance as yf
 import pandas as pd
 import numpy as np
+import datetime
 import seaborn as sns
 import matplotlib.pyplot as plt
 from scipy.optimize import minimize
@@ -23,8 +24,10 @@ tickers = [ticker.strip().upper() for ticker in tickers_input.split(',')]
 
 if tickers_input:
     try:
+        end_date= datetime.datetime.now()
+        start_date = end_date - datetime.timedelta(days=years * 365)
         # Fetch stock data
-        stock_data = yf.download(tickers, period=f"{years}y")['Adj Close']
+        stock_data = yf.download(tickers, start=start_date, end=end_date)['Adj Close']
         if stock_data.empty:
             st.warning("No data found for the entered tickers.")
         else:
