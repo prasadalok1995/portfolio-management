@@ -14,7 +14,7 @@ def load_data():
     nse_tickers['symbol_name'] = nse_tickers['SYMBOL']
 
     # Load BSE ticker symbols
-    bse_tickers = pd.read_csv("equitybse.csv")
+    bse_tickers = pd.read_csv("Equitybse.csv")
     bse_tickers['SYMBOL'] = bse_tickers['SYMBOL'] + ".BO"
     bse_tickers['symbol_name'] = bse_tickers['SYMBOL']
 
