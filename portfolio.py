@@ -24,7 +24,7 @@ def main():
         nse_ticker_list['SYMBOL'] = nse_ticker_list['SYMBOL'] + ".NS"
     
          # Load BSE-listed tickers and add '.BO' suffix
-        bse_ticker_list = pd.read_csv("equitybse.csv")
+        bse_ticker_list = pd.read_csv("Equitybse.csv")
         bse_ticker_list = bse_ticker_list[bse_ticker_list['SYMBOL'].notna()]
         bse_ticker_list['SYMBOL'] = bse_ticker_list['SYMBOL'] + ".BO"
     
