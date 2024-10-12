@@ -9,7 +9,7 @@ def show_about_me():
 
     with col1:
     # Load and process the image to be circular
-        image = Image.open("C:/Users/prasa/OneDrive/Desktop/vs code/streamlit/Pages/DSC_3220.JPG")
+        image = Image.open("DSC_3220.JPG")
         size = (min(image.size), min(image.size))  # Set size to be square for the circular mask
 
         # Create a mask for circular cropping
