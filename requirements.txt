@@ -9,3 +9,4 @@ matplotlib
 seaborn
 tensorflow
 keras
+streamlit_lottie
