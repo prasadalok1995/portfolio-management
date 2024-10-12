@@ -1,7 +1,9 @@
-streamlit
-yfinance
-pandas
-numpy
-seaborn
-matplotlib
-scipy
+streamlit==1.10.0
+pandas==1.4.2
+numpy==1.23.1
+yfinance==0.1.67
+scikit-learn==1.1.2
+matplotlib==3.5.2
+seaborn==0.11.2
+tensorflow==2.11.0  # If you are using Keras within TensorFlow
+keras==2.11.0  # Specify version if you're using standalone Keras
