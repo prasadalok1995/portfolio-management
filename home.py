@@ -24,7 +24,7 @@ def main():
 ] 
     # Adding a unique key to the selectbox
     choice = st.sidebar.selectbox("Select a page", options)
-    lottie_animation_1 = load_lottie_file(r"C:/Users/prasa/OneDrive/Desktop/vs code/streamlit/Pages/example_animation.json")
+    lottie_animation_1 = load_lottie_file(r"example_animation.json")
 
     # Page navigation logic
     if choice == "🏠 Home":
