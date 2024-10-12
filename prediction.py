@@ -36,7 +36,7 @@ def main():
     
     # Fetch stock data
     google_data = yf.download(stock, start, end)
-    model = load_model("C:/Users/prasa/OneDrive/Desktop/vs code/streamlit/Pages/Latest_stock_price_model.keras")
+    model = load_model("Latest_stock_price_model.keras")
     
     # Display stock data
     st.subheader("Stock Data")
