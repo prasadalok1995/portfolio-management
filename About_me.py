@@ -1,6 +1,17 @@
 import streamlit as st
 from PIL import Image, ImageOps
 
+Description = """Financial Data Analyst, Equity Market Research, Technical Analyst"""
+email = "prasadalok86@gmail.com"
+social_icons = {
+    "LinkedIn": "https://img.icons8.com/ios-filled/150/linkedin.png",
+    "GitHub": "https://img.icons8.com/ios-filled/150/github.png"
+    }
+
+social_links = {
+    "LinkedIn": "https://www.linkedin.com/in/aalokkmr",
+    "GitHub": "https://github.com/prasadalok1995"
+    }
 def show_about_me():
     st.title("About Me")
     st.write("I am an MBA student specializing in finance and business analytics.")
@@ -10,23 +21,23 @@ def show_about_me():
     with col1:
     # Load and process the image to be circular
         image = Image.open("DSC_3220.jpg")
-        size = (min(image.size), min(image.size))  # Set size to be square for the circular mask
-
-        # Create a mask for circular cropping
-        mask = Image.new("L", size, 0)
-        circle = Image.new("L", size, 255)
-        mask.paste(circle, (0, 0))
-
-        # Crop and mask the image to make it circular
-        image = ImageOps.fit(image, size, centering=(0.5, 0.5))
-        image.putalpha(mask) 
 
         st.image(image, width=200)  # Adjust width as needed
 
     with col2:
         st.subheader("ALOK KUMAR")
-        st.write("Financial Data Analyst, Equity Market Research, Technical Analyst")
-    
+        st.write(Description)
+        st.write("📩",email)
+        st.write("☎️ 9097878279")
+    cols= st.columns(len(social_icons))
+    for i, (platform, icon) in enumerate(social_icons.items()):
+        link = social_links[platform]
+        with cols[i]:
+            st.markdown(
+                f'<a href="{link}" target="_blank"><img src="{icon}" width="40" alt="{platform}"></a>',
+                unsafe_allow_html=True
+            )    
+        
 
     st.subheader("Education")
     st.write("MBA in Finance and Business Analytics - Jaipuria Institute of Management Indore")
@@ -62,11 +73,7 @@ def show_about_me():
     - Investment Risk Management from Coursera
     - Google Analytics from Google
     - Introduction to Data Analysis using Microsoft Excel from Coursera
-    """)
-    st.subheader("Connect with Me",anchor=False)
-    st.write("[LinkedIn Profile](https://www.linkedin.com/in/aalokkmr)")
-    st.write("☎️ 9097878279")
-    st.write("📩 prasadalok86@gmail.com")         
+    """)        
 
 if __name__ == "__main__":
     show_about_me()
