@@ -20,6 +20,14 @@ def load_data():
 
     # Combine both lists
     combined_tickers = pd.concat([nse_tickers, bse_tickers], ignore_index=True)
+    #index symbol
+    index_tickers = pd.DataFrame({
+    'SYMBOL': ['^NSEI', '^NSEBANK', '^BSESN'],
+    'symbol_name': ['^NSEI', '^NSEBANK', '^BSESN']
+    })
+
+    # Combine both lists
+    combined_tickers = pd.concat([combined_tickers, index_tickers], ignore_index=True)
     return combined_tickers
 
 def main():
