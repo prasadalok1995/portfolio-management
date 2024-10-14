@@ -85,8 +85,7 @@ def main():
                         st.pyplot(fig)
 
                         # Portfolio Optimization
-                        scenario = st.selectbox("Optimization Strategy", ['Optimal Risk Portfolio', 'Global Minimum Variance', 'Equal Weights'])
-
+                        scenario = st.selectbox("Optimization Strategy", ['Optimal Risk Portfolio', 'Global Minimum Variance', 'Equal Weights', 'Equal Risk Contribution', 'Most Diversified Portfolio'])
                         def get_optimized_weights(scenario):
                             num_assets = len(returns_df.columns)
                             args = (returns_df.mean(), cov_matrix)
@@ -103,6 +102,21 @@ def main():
                                 def portfolio_volatility(weights):
                                     return np.sqrt(np.dot(weights.T, np.dot(cov_matrix, weights))) * np.sqrt(252)
                                 result = minimize(portfolio_volatility, num_assets * [1. / num_assets], bounds=bounds, constraints=constraints)
+                            elif scenario == 'Equal Risk Contribution':
+                                def risk_contribution(weights):
+                                    port_variance = np.dot(weights.T, np.dot(cov_matrix, weights))
+                                    marginal_contributions = np.dot(cov_matrix, weights)
+                                    return (weights * marginal_contributions) / port_variance  
+
+                                def erc_objective(weights):
+                                    rc = risk_contribution(weights)
+                                    return np.sum((rc - rc.mean()) ** 2)  
+                                result = minimize(erc_objective, num_assets * [1. / num_assets], bounds=bounds, constraints=constraints)
+                            elif scenario == 'Most Diversified Portfolio':
+                                def mdp_objective(weights):
+                                    return -np.linalg.det(cov_matrix @ np.diag(weights))
+
+                                result = minimize(mdp_objective, num_assets * [1. / num_assets], bounds=bounds, constraints=constraints)
                             else:
                                 result = {'x': np.array([1. / num_assets] * num_assets)}
                             
