@@ -11,6 +11,26 @@ st.set_page_config(page_title="Financial App",
 def load_lottie_file(file_path: str):
     with open(file_path, "r") as f:
         return json.load(f)
+st.markdown(
+    """
+    <style>
+        /* Change background color for the specific class */
+        .st-emotion-cache-12fmjuu {
+            background-color: #ffffff;  
+        }
+        .stApp {
+            background-color: #ffffff;  
+        }
+        .stSidebar, .st-emotion-cache-1gv3huu {
+            background-color: #e9daf1; 
+        }
+        .st-emotion-cache-15ecox0.ezrtsby0 {
+    display: none;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+    )
 
 def main():
     
