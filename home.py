@@ -18,6 +18,9 @@ st.markdown(
         .st-emotion-cache-12fmjuu {
             background-color: #ffffff;  
         }
+        ._container_dh3jt_1._viewerBadge_nim44_23 {
+    display: none;
+        }
         .stApp {
             background-color: #ffffff;  
         }
